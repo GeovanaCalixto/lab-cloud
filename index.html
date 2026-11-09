@@ -1,0 +1,198 @@
+Laboratório da AG — código completo
+Copie apenas o código abaixo, começando em <!DOCTYPE html> e terminando em </html>. No VS Code, substitua todo o conteúdo do index.html por ele e salve.
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laboratório da AG | EC2</title>
+<style>
+:root{--rosa:#c92873;--laranja:#ec8e4e;--texto:#302234;--suave:#776a78;--borda:#eddee6;--fundo:#fbf7f9}
+*{box-sizing:border-box}body{margin:0;background:var(--fundo);color:var(--texto);font:15px/1.5 system-ui,sans-serif}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid var(--laranja);outline-offset:2px}
+header{background:white;border-bottom:1px solid var(--borda);padding:16px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px}.marca{font-size:20px;font-weight:800}.marca span{color:var(--rosa)}.selo{background:#fae7f0;color:#a82b65;border-radius:30px;padding:5px 12px;font-size:12px;font-weight:700}
+.container{max-width:1320px;margin:auto;padding:30px 5%}h1{font-size:clamp(26px,4vw,40px);line-height:1.15;margin:6px 0}h2{font-size:21px;margin:0 0 8px}h3{font-size:15px;margin:0 0 9px}.legenda{color:var(--suave);margin:0 0 22px}.destaque{color:var(--rosa);font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase}.layout{display:grid;grid-template-columns:205px minmax(0,1fr) 250px;gap:16px;align-items:start}.painel{background:white;border:1px solid var(--borda);border-radius:18px;padding:20px;box-shadow:0 8px 28px #47243b08}.menu{display:grid;gap:5px}.etapa{border:0;background:transparent;text-align:left;padding:10px;border-radius:9px;color:var(--suave)}.etapa:hover,.etapa.ativa{background:#fceaf3;color:#a51e5c}.etapa.ativa{font-weight:750}.numero{display:inline-grid;place-items:center;background:#f3edf1;border-radius:50%;width:24px;height:24px;margin-right:7px;font-size:12px}.ativa .numero{background:var(--rosa);color:white}
+.print{min-height:175px;border:1px dashed #ddbaca;border-radius:14px;background:#fffbfd;display:grid;place-items:center;text-align:center;margin:18px 0;padding:15px;color:var(--suave)}.print img{display:block;max-width:100%;max-height:420px;border-radius:10px}.print figcaption{font-size:12px;margin-top:8px}.elementos{display:flex;flex-wrap:wrap;gap:8px}.elementos button,.controle button,.quiz button{border:1px solid var(--borda);background:#fff;border-radius:9px;padding:8px 12px;color:var(--texto)}.elementos button:hover,.elementos button.ativo{border-color:var(--rosa);background:#fdf0f6}.explicacao{background:#fff5fa;border-left:3px solid var(--rosa);padding:11px 13px;border-radius:4px 9px 9px 4px;margin:10px 0 18px}.bloco{border-top:1px solid var(--borda);padding-top:16px;margin-top:16px}pre{background:#302234;color:white;padding:14px;border-radius:10px;white-space:pre-wrap;overflow-wrap:anywhere}pre code{font:13px/1.6 ui-monospace,monospace}.papel{background:repeating-linear-gradient(#fffaf5,#fffaf5 29px,#f2e3d9 30px);padding:14px;border-radius:10px;color:#67566a;min-height:100px}.quiz{margin-top:16px}.pergunta{background:#fff5fa;border-radius:10px;padding:14px;min-height:80px;font-weight:650}.quiz button{margin:8px 4px 0 0}.quiz button.principal{background:var(--rosa);border-color:var(--rosa);color:white}.controle{display:flex;justify-content:space-between;gap:8px;margin-top:20px}.controle button:disabled{opacity:.4;cursor:default}.aviso,footer{color:var(--suave);font-size:12px;margin-top:18px}.contador{color:var(--suave);font-size:12px}
+@media(max-width:950px){.layout{grid-template-columns:180px minmax(0,1fr)}.estudo{grid-column:2}}@media(max-width:650px){.layout{display:block}.painel{margin-bottom:14px}.menu{display:flex;overflow:auto}.etapa{white-space:nowrap}.container{padding-top:20px}}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header><div class="marca">◈ Laboratório da <span>AG</span></div><div class="selo">Simulação visual</div></header>
+<div class="container"><div class="destaque">Portfólio • Cloud</div><h1>Introdução ao Amazon EC2</h1><p class="legenda">Do desafio ao encerramento da instância.</p>
+<div class="layout">
+<aside class="painel"><h3>Jornada do laboratório</h3><nav id="menu" class="menu" aria-label="Etapas"></nav></aside>
+<main class="painel"><div class="destaque" id="numeroEtapa"></div><h2 id="titulo"></h2><p id="descricao"></p><figure class="print" id="print"></figure><h3>Explore os elementos</h3><div class="elementos" id="elementos"></div><p class="explicacao" id="explicacao" aria-live="polite">Toque ou passe o mouse em um elemento para explorar.</p><section class="bloco" id="comandosBloco" hidden><h3>Comandos e código</h3><pre><code id="comandos"></code></pre><p id="explicacaoCodigo"></p></section><div class="controle"><button id="anterior">← Anterior</button><span class="contador" id="contador"></span><button id="proximo">Próxima →</button></div><p class="aviso">Protótipo de apresentação: não controla recursos reais. Prints, comandos, anotações e resultados devem ser conferidos antes da publicação.</p></main>
+<aside class="painel estudo"><h3>Minhas anotações</h3><div class="papel" id="anotacoes"></div><section class="bloco quiz"><h3>Autoquiz</h3><p class="contador" id="quizContador"></p><div class="pergunta" id="quizTexto"></div><button class="principal" id="virar">Virar card</button><div><button id="acertei" disabled>Acertei</button><button id="revisar" disabled>Revisar</button></div><p class="contador" id="quizStatus" aria-live="polite">Pense na resposta e vire o card.</p></section></aside>
+</div><footer>Laboratório da AG • Espaço autoral de estudo</footer></div>
+<script>
+// Configure o projeto aqui. A ordem destas seções define o menu.
+// Renomeie, acrescente, reordene ou remova seções conforme o laboratório.
+// Para ocultar print, comandos, passos ou elementos, deixe o campo vazio.
+// Use somente imagens e comandos revisados, sem credenciais ou dados sensíveis.
+const secoes = [
+  {
+    titulo: 'O desafio',
+    descricao: 'Explorar a criação, a proteção, o monitoramento e o encerramento de uma instância EC2 em um ambiente de laboratório.',
+    passos: [], imagem: '', legenda: '', comandos: '', explicacaoCodigo: '',
+    notas: 'Registre aqui o contexto e o objetivo com suas próprias palavras.',
+    elementos: []
+  },
+  {
+    titulo: 'Como fiz',
+    descricao: 'Os tópicos relatados para este laboratório estão organizados abaixo. Complete os detalhes depois de conferir a prática.',
+    passos: [
+      'Iniciar o servidor web com proteção contra encerramento.',
+      'Monitorar a instância.',
+      'Ajustar o grupo de segurança para permitir HTTP.',
+      'Redimensionar a instância.',
+      'Testar a proteção e encerrar a instância.'
+    ],
+    imagem: '', legenda: '', comandos: '', explicacaoCodigo: '',
+    notas: 'Acrescente configurações, decisões e observações realmente verificadas.',
+    elementos: [
+      {nome: 'Servidor', texto: 'Uma instância EC2 é um servidor virtual que pode executar uma aplicação web.'},
+      {nome: 'Segurança', texto: 'O grupo de segurança controla o tráfego permitido por meio de regras.'},
+      {nome: 'HTTP', texto: 'HTTP é um protocolo usado na comunicação entre clientes e servidores web.'}
+    ]
+  },
+  {
+    titulo: 'Resultado',
+    descricao: 'Registre aqui o que você observou e as evidências confirmadas ao concluir o laboratório.',
+    passos: [], imagem: '', legenda: '', comandos: '', explicacaoCodigo: '',
+    notas: 'Resultado ainda a confirmar. Não inclua informações sensíveis nos prints.',
+    elementos: []
+  },
+  {
+    titulo: 'O que aprendi',
+    descricao: 'Reúna as ideias principais e revise os conceitos no autoquiz.',
+    passos: [], imagem: '', legenda: '', comandos: '', explicacaoCodigo: '',
+    notas: 'Anote seus aprendizados depois de revisar a prática.',
+    elementos: []
+  }
+];
+
+// Deixe o array vazio para esconder o autoquiz naquele projeto.
+const quiz = [
+  {pergunta: 'O que faz um grupo de segurança?', resposta: 'Controla o tráfego permitido de entrada e saída por meio de regras.'},
+  {pergunta: 'O que é uma instância EC2?', resposta: 'Um servidor virtual oferecido pelo Amazon EC2.'},
+  {pergunta: 'Para que serve a proteção contra encerramento?', resposta: 'Ajuda a evitar o encerramento acidental de uma instância.'}
+];
+
+const $ = id => document.getElementById(id);
+let secaoAtual = 0, cardAtual = 0, respostaVisivel = false;
+const resultados = Array(quiz.length).fill(null);
+
+// Cria a lista opcional de passos sem prender o menu a um tipo de lab.
+const listaPassos = document.createElement('ol');
+$('descricao').after(listaPassos);
+const areaElementos = $('elementos');
+const tituloElementos = areaElementos.previousElementSibling;
+
+function mostrarSecao(indice) {
+  secaoAtual = indice;
+  const item = secoes[indice];
+  $('numeroEtapa').textContent = `Seção ${indice + 1} de ${secoes.length}`;
+  $('titulo').textContent = item.titulo;
+  $('descricao').textContent = item.descricao || '';
+  $('anotacoes').textContent = item.notas || 'Sem anotações nesta seção.';
+  $('anotacoes').style.whiteSpace = 'pre-line';
+
+  listaPassos.replaceChildren();
+  (item.passos || []).forEach(passo => {
+    const li = document.createElement('li');
+    li.textContent = passo;
+    listaPassos.append(li);
+  });
+  listaPassos.hidden = !(item.passos || []).length;
+
+  const areaPrint = $('print');
+  areaPrint.replaceChildren();
+  areaPrint.hidden = !item.imagem;
+  if (item.imagem) {
+    const img = document.createElement('img');
+    img.src = item.imagem;
+    img.alt = item.legenda || 'Registro do laboratório';
+    img.onerror = () => { areaPrint.textContent = 'Não foi possível carregar o print. Confira o caminho da imagem.'; };
+    const legenda = document.createElement('figcaption');
+    legenda.textContent = item.legenda || '';
+    areaPrint.append(img, legenda);
+  }
+
+  $('comandosBloco').hidden = !item.comandos;
+  $('comandos').textContent = item.comandos || '';
+  $('explicacaoCodigo').textContent = item.explicacaoCodigo || '';
+
+  areaElementos.replaceChildren();
+  const elementos = item.elementos || [];
+  tituloElementos.hidden = !elementos.length;
+  areaElementos.hidden = !elementos.length;
+  $('explicacao').hidden = !elementos.length;
+  $('explicacao').textContent = 'Toque ou passe o mouse em um elemento para explorar.';
+  elementos.forEach(elemento => {
+    const botao = document.createElement('button');
+    botao.textContent = elemento.nome;
+    const mostrar = () => {
+      areaElementos.querySelectorAll('button').forEach(b => b.classList.remove('ativo'));
+      botao.classList.add('ativo');
+      $('explicacao').textContent = elemento.texto;
+    };
+    botao.addEventListener('mouseenter', mostrar);
+    botao.addEventListener('focus', mostrar);
+    botao.addEventListener('click', mostrar);
+    areaElementos.append(botao);
+  });
+
+  $('anterior').disabled = indice === 0;
+  $('proximo').disabled = indice === secoes.length - 1;
+  $('contador').textContent = `${indice + 1} / ${secoes.length}`;
+  document.querySelectorAll('.etapa').forEach((botao, i) => {
+    botao.classList.toggle('ativa', i === indice);
+    if (i === indice) botao.setAttribute('aria-current', 'step');
+    else botao.removeAttribute('aria-current');
+  });
+}
+
+secoes.forEach((item, indice) => {
+  const botao = document.createElement('button');
+  botao.className = 'etapa';
+  const numero = document.createElement('span');
+  numero.className = 'numero';
+  numero.textContent = indice + 1;
+  botao.append(numero, document.createTextNode(item.titulo));
+  botao.addEventListener('click', () => mostrarSecao(indice));
+  $('menu').append(botao);
+});
+$('anterior').addEventListener('click', () => mostrarSecao(secaoAtual - 1));
+$('proximo').addEventListener('click', () => mostrarSecao(secaoAtual + 1));
+
+function mostrarCard() {
+  respostaVisivel = false;
+  $('quizTexto').textContent = quiz[cardAtual].pergunta;
+  $('quizContador').textContent = `Card ${cardAtual + 1} de ${quiz.length}`;
+  $('virar').textContent = 'Virar card';
+  $('acertei').disabled = true;
+  $('revisar').disabled = true;
+}
+function registrar(resultado) {
+  resultados[cardAtual] = resultado;
+  cardAtual = (cardAtual + 1) % quiz.length;
+  mostrarCard();
+  const acertos = resultados.filter(x => x === 'acertei').length;
+  const revisoes = resultados.filter(x => x === 'revisar').length;
+  $('quizStatus').textContent = `Nesta sessão: ${acertos} acertei · ${revisoes} para revisar. Ao recarregar, o progresso é apagado.`;
+}
+$('virar').addEventListener('click', () => {
+  respostaVisivel = !respostaVisivel;
+  $('quizTexto').textContent = respostaVisivel ? quiz[cardAtual].resposta : quiz[cardAtual].pergunta;
+  $('virar').textContent = respostaVisivel ? 'Ver pergunta' : 'Virar card';
+  $('acertei').disabled = !respostaVisivel;
+  $('revisar').disabled = !respostaVisivel;
+});
+$('acertei').addEventListener('click', () => registrar('acertei'));
+$('revisar').addEventListener('click', () => registrar('revisar'));
+document.querySelector('.quiz').hidden = !quiz.length;
+if (secoes.length) mostrarSecao(0);
+if (quiz.length) mostrarCard();
+</script>
+</body>
+</html>
