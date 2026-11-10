@@ -1,9 +1,7 @@
 # ☁️💻 Laboratórios Cloud
 
-
-Este espaço reúne práticas da minha formação em AWS Cloud Compute, pela Escola da Nuvem. 
-
-Aqui compartilho os desafios, as soluções e os aprendizados que construo ao explorar a nuvem
+Aqui compartilho os desafios, as soluções e os aprendizados que construo ao explorar AWS Cloud Compute
+pela Escola da Nuvem 
 
 
 
