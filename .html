@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+    
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +13,16 @@ header{background:white;border-bottom:1px solid var(--borda);padding:16px 5%;dis
 .print{min-height:175px;border:1px dashed #ddbaca;border-radius:14px;background:#fffbfd;display:grid;place-items:center;text-align:center;margin:18px 0;padding:15px;color:var(--suave)}.print img{display:block;max-width:100%;max-height:420px;border-radius:10px}.print figcaption{font-size:12px;margin-top:8px}.elementos{display:flex;flex-wrap:wrap;gap:8px}.elementos button,.controle button,.quiz button{border:1px solid var(--borda);background:#fff;border-radius:9px;padding:8px 12px;color:var(--texto)}.elementos button:hover,.elementos button.ativo{border-color:var(--rosa);background:#fdf0f6}.explicacao{background:#fff5fa;border-left:3px solid var(--rosa);padding:11px 13px;border-radius:4px 9px 9px 4px;margin:10px 0 18px}.bloco{border-top:1px solid var(--borda);padding-top:16px;margin-top:16px}pre{background:#302234;color:white;padding:14px;border-radius:10px;white-space:pre-wrap;overflow-wrap:anywhere}pre code{font:13px/1.6 ui-monospace,monospace}.papel{background:repeating-linear-gradient(#fffaf5,#fffaf5 29px,#f2e3d9 30px);padding:14px;border-radius:10px;color:#67566a;min-height:100px}.quiz{margin-top:16px}.pergunta{background:#fff5fa;border-radius:10px;padding:14px;min-height:80px;font-weight:650}.quiz button{margin:8px 4px 0 0}.quiz button.principal{background:var(--rosa);border-color:var(--rosa);color:white}.controle{display:flex;justify-content:space-between;gap:8px;margin-top:20px}.controle button:disabled{opacity:.4;cursor:default}.aviso,footer{color:var(--suave);font-size:12px;margin-top:18px}.contador{color:var(--suave);font-size:12px}
 @media(max-width:950px){.layout{grid-template-columns:180px minmax(0,1fr)}.estudo{grid-column:2}}@media(max-width:650px){.layout{display:block}.painel{margin-bottom:14px}.menu{display:flex;overflow:auto}.etapa{white-space:nowrap}.container{padding-top:20px}}
 [hidden]{display:none!important}
+/* Prévia: mesma estrutura, com roxo e laranja. */
+:root{--rosa:#623c88;--laranja:#bd5a17;--texto:#30283a;--suave:#625b69;--borda:#dfd8e8;--fundo:#f8f7fa}
+.selo{background:#fff1e4;color:#8a3e0a}
+.etapa:hover,.etapa.ativa{background:#eee8f6;color:#52306f}
+.numero{background:#eeeaf2}
+.print{border-color:#cfc3db;background:#fcfbfd}
+.elementos button:hover,.elementos button.ativo{background:#f2edf8}
+.explicacao,.pergunta{background:#f3eff8}
+
+.papel{background:repeating-linear-gradient(#fffaf5,#fffaf5 29px,#eedfd2 30px)}
 </style>
 </head>
 <body>
@@ -66,8 +77,9 @@ const secoes = [
     passos: [], imagem: '', legenda: '', comandos: '', explicacaoCodigo: '',
     notas: 'Anote seus aprendizados depois de revisar a prática.',
     elementos: []
-  }
-];
+
+    }
+]
 
 // Deixe o array vazio para esconder o autoquiz naquele projeto.
 const quiz = [
@@ -102,8 +114,7 @@ function mostrarSecao(indice) {
     listaPassos.append(li);
   });
   listaPassos.hidden = !(item.passos || []).length;
-
-  const areaPrint = $('print');
+const areaPrint = $('print');
   areaPrint.replaceChildren();
   areaPrint.hidden = !item.imagem;
   if (item.imagem) {
@@ -139,6 +150,7 @@ function mostrarSecao(indice) {
     botao.addEventListener('click', mostrar);
     areaElementos.append(botao);
   });
+
 
   $('anterior').disabled = indice === 0;
   $('proximo').disabled = indice === secoes.length - 1;
@@ -191,7 +203,8 @@ $('revisar').addEventListener('click', () => registrar('revisar'));
 document.querySelector('.quiz').hidden = !quiz.length;
 if (secoes.length) mostrarSecao(0);
 if (quiz.length) mostrarCard();
-</script>
-</body>
+  </script>
+
+ </body>
 
 </html>
