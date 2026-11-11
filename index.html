@@ -1,1 +1,97 @@
-<meta http-equiv="refresh" content="0; url=aws/ec2/introducao-ec2/">
+<!doctype html>
+<html lang="pt-BR">
+  
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratório da AG | Meus labs</title>
+<style>
+:root{--rosa:#623c88;--laranja:#bd5a17;--texto:#30283a;--suave:#625b69;--borda:#dfd8e8;--fundo:#f8f7fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fundo);color:var(--texto);font:15px/1.5 system-ui,sans-serif}
+header{background:white;border-bottom:1px solid var(--borda);padding:16px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.marca{font-size:20px;font-weight:800}.marca span{color:var(--rosa)}
+.selo{background:#fff1e4;color:#8a3e0a;border-radius:30px;padding:5px 12px;font-size:12px;font-weight:700}
+main{max-width:1180px;margin:auto;padding:48px 5%}
+.destaque{color:var(--rosa);font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+h1{font-size:clamp(30px,5vw,44px);line-height:1.15;margin:10px 0}
+.intro{color:var(--suave);max-width:620px;margin:0 0 32px}
+.cabecalho{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:16px}
+h2{font-size:20px;margin:0}.contador{color:var(--suave);font-size:13px}
+.grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:white;border:1px solid var(--borda);border-radius:18px;padding:24px;display:flex;flex-direction:column;min-height:260px;box-shadow:0 8px 28px #47243b08}
+.card-topo{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.icone{width:46px;height:46px;display:grid;place-items:center;background:#eee8f6;border-radius:12px;color:var(--rosa);font-size:24px;font-weight:700}
+.tipo{color:var(--suave);font-size:12px;font-weight:700}
+.card h3{font-size:20px;line-height:1.3;margin:20px 0 8px}
+.card p{color:var(--suave);margin:0 0 16px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 24px}
+.tag{background:#f3eff8;color:#52306f;border-radius:30px;padding:4px 10px;font-size:12px;font-weight:700}
+.link{align-self:flex-start;margin-top:auto;color:var(--rosa);font-weight:750;text-decoration:none}
+.link:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:3px solid var(--laranja);outline-offset:3px}
+.paginacao{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:28px}
+.paginacao button{border:1px solid var(--borda);background:white;color:var(--texto);border-radius:9px;padding:9px 14px;font:inherit;cursor:pointer}
+.paginacao button:disabled{opacity:.45;cursor:default}
+footer{color:var(--suave);font-size:12px;margin-top:42px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+[hidden]{display:none!important}
+@media(max-width:850px){.grade{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.grade{grid-template-columns:1fr}main{padding-top:32px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="marca">◈ Laboratório da <span>AG</span></div>
+  <div class="selo">Espaço de estudo</div>
+</header>
+<main>
+  <div class="destaque">Portfólio • Cloud</div>
+  <h1>Meus laboratórios</h1>
+  <p class="intro">Um espaço para explorar minha jornada de estudos em nuvem, projeto por projeto.</p>
+  <div class="cabecalho"><h2>Labs</h2><span class="contador" id="total"></span></div>
+  <section class="grade" id="labs" aria-label="Laboratórios">
+    <!-- Para adicionar um lab, copie este bloco article e altere título, descrição, tags e href para a pasta do novo lab. -->
+    <article class="card">
+      <div class="card-topo"><div class="icone" aria-hidden="true">◈</div><span class="tipo">Laboratório</span></div>
+      <h3>Introdução ao Amazon EC2</h3>
+      <p>Do desafio ao encerramento de uma instância: uma jornada visual pelo ciclo de vida de um servidor web.</p>
+      <div class="tags" aria-label="Temas"><span class="tag">AWS</span><span class="tag">EC2</span><span class="tag">Servidor web</span></div>
+
+
+      <a class="link" href="aws/ec2/introducao-ec2/">Ver mais <span aria-hidden="true">→</span><span class="sr-only"> sobre Introdução ao Amazon EC2</span></a>
+    </article>
+  </section>
+  <nav class="paginacao" id="paginacao" aria-label="Páginas de laboratórios" hidden>
+    <button id="anterior" type="button">← Anterior</button>
+    <span id="pagina" aria-live="polite"></span>
+    <button id="proximo" type="button">Próxima →</button>
+  </nav>
+  <footer>Laboratório da AG • Espaço autoral de estudo</footer>
+</main>
+<script>
+// A paginação aparece quando houver mais de seis cartões.
+const cards = Array.from(document.querySelectorAll('#labs .card'));
+const porPagina = 6;
+let pagina = 0;
+const totalPaginas = Math.max(1, Math.ceil(cards.length / porPagina));
+document.getElementById('total').textContent = cards.length === 1 ? '1 laboratório' : ${cards.length} laboratórios;
+const nav = document.getElementById('paginacao');
+const anterior = document.getElementById('anterior');
+const proximo = document.getElementById('proximo');
+const indicador = document.getElementById('pagina');
+function atualizar() {
+  cards.forEach((card, i) => { card.hidden = Math.floor(i / porPagina) !== pagina; });
+  indicador.textContent = Página ${pagina + 1} de ${totalPaginas};
+  anterior.disabled = pagina === 0;
+  proximo.disabled = pagina === totalPaginas - 1;
+}
+if (totalPaginas > 1) {
+  nav.hidden = false;
+  anterior.addEventListener('click', () => { if (pagina > 0) { pagina--; atualizar(); } });
+  proximo.addEventListener('click', () => { if (pagina < totalPaginas - 1) { pagina++; atualizar(); } });
+  atualizar();
+}
+</script>
+</body>
+</html>
