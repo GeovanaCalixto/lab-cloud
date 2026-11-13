@@ -1,9 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="pt-BR">
-  
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Laboratório da AG | Meus labs</title>
 <style>
 :root{--rosa:#623c88;--laranja:#bd5a17;--texto:#30283a;--suave:#625b69;--borda:#dfd8e8;--fundo:#f8f7fa}
@@ -42,46 +42,44 @@ footer{color:var(--suave);font-size:12px;margin-top:42px}
 </head>
 <body>
 <header>
-  <div class="marca">◈ Laboratório da <span>AG</span></div>
-  <div class="selo">Espaço de estudo</div>
+<div class="marca">◈ Laboratório da <span>AG</span></div>
+<div class="selo">Espaço de estudo</div>
 </header>
 <main>
-  <div class="destaque">Portfólio • Cloud</div>
-  <h1>Meus laboratórios</h1>
-  <p class="intro">Um espaço para explorar minha jornada de estudos em nuvem, projeto por projeto.</p>
-  <div class="cabecalho"><h2>Labs</h2><span class="contador" id="total"></span></div>
-  <section class="grade" id="labs" aria-label="Laboratórios">
-    <!-- Para adicionar um lab, copie este bloco article e altere título, descrição, tags e href para a pasta do novo lab. -->
-    <article class="card">
-      <div class="card-topo"><div class="icone" aria-hidden="true">◈</div><span class="tipo">Laboratório</span></div>
-      <h3>Introdução ao Amazon EC2</h3>
-      <p>Do desafio ao encerramento de uma instância: uma jornada visual pelo ciclo de vida de um servidor web.</p>
-      <div class="tags" aria-label="Temas"><span class="tag">AWS</span><span class="tag">EC2</span><span class="tag">Servidor web</span></div>
-
-
-      <a class="link" href="aws/ec2/introducao-ec2/">Ver mais <span aria-hidden="true">→</span><span class="sr-only"> sobre Introdução ao Amazon EC2</span></a>
-    </article>
-    <article class="card">
-      <div class="card-topo"><div class="icone" aria-hidden="true">◈</div><span class="tipo">Laboratório</span></div>
-      <h3>Lab 261 • IP público, privado e Elastic IP</h3>
-      <p>Investigação de conectividade entre instâncias EC2 e comunicação de uma solução de rede em contexto de suporte Cloud.</p>
-      <div class="tags" aria-label="Temas"><span class="tag">AWS</span><span class="tag">EC2</span><span class="tag">Redes</span></div>
-      <a class="link" href="aws/rede/lab-261/">Ver mais <span aria-hidden="true">→</span><span class="sr-only"> sobre o Lab 261</span></a>
-    </article>
-    <article class="card">
-      <div class="card-topo"><div class="icone" aria-hidden="true">◈</div><span class="tipo">Evidências</span></div>
-      <h3>Labs 11, 261 e 264</h3>
-      <p>Registros de estudo e comunicações sobre EC2, redes e conectividade, com dados protegidos.</p>
-      <div class="tags" aria-label="Temas"><span class="tag">EC2</span><span class="tag">VPC</span><span class="tag">Redes</span></div>
-      <a class="link" href="evidencias/bloco-1-2/">Ver evidências <span aria-hidden="true">→</span><span class="sr-only"> dos Labs 11, 261 e 264</span></a>
-    </article>
-  </section>
-  <nav class="paginacao" id="paginacao" aria-label="Páginas de laboratórios" hidden>
-    <button id="anterior" type="button">← Anterior</button>
-    <span id="pagina" aria-live="polite"></span>
-    <button id="proximo" type="button">Próxima →</button>
-  </nav>
-  <footer>Laboratório da AG • Espaço autoral de estudo</footer>
+<div class="destaque">Portfólio • Cloud</div>
+<h1>Meus laboratórios</h1>
+<p class="intro">Um espaço para explorar minha jornada de estudos em nuvem, projeto por projeto.</p>
+<div class="cabecalho"><h2>Labs</h2><span class="contador" id="total"></span></div>
+<section aria-label="Laboratórios" class="grade" id="labs">
+<!-- Para adicionar um lab, copie este bloco article e altere título, descrição, tags e href para a pasta do novo lab. -->
+<article class="card">
+<div class="card-topo"><div aria-hidden="true" class="icone">◈</div><span class="tipo">Laboratório</span></div>
+<h3>Lab 11 • Introdução ao Amazon EC2</h3>
+<p>Do desafio ao encerramento de uma instância: uma jornada visual pelo ciclo de vida de um servidor web.</p>
+<div aria-label="Temas" class="tags"><span class="tag">AWS</span><span class="tag">EC2</span><span class="tag">Servidor web</span></div>
+<a class="link" href="aws/ec2/introducao-ec2/">Ver mais <span aria-hidden="true">→</span><span class="sr-only"> sobre Introdução ao Amazon EC2</span></a>
+</article>
+<article class="card">
+<div class="card-topo"><div aria-hidden="true" class="icone">◈</div><span class="tipo">Laboratório</span></div>
+<h3>Lab 261 • IP público, privado e Elastic IP</h3>
+<p>Investigação de conectividade entre instâncias EC2 e comunicação de uma solução de rede em contexto de suporte Cloud.</p>
+<div aria-label="Temas" class="tags"><span class="tag">AWS</span><span class="tag">EC2</span><span class="tag">Redes</span></div>
+<a class="link" href="aws/rede/lab-261/">Ver mais <span aria-hidden="true">→</span><span class="sr-only"> sobre o Lab 261</span></a>
+</article><article class="card"><div class="card-topo"><div aria-hidden="true" class="icone">◈</div><span class="tipo">Laboratório</span></div><h3>Lab 264 • Conectividade de rede</h3><p>Configuração de VPC, sub-rede e rotas, com diagnóstico e teste de conectividade.</p><div aria-label="Temas" class="tags"><span class="tag">AWS</span><span class="tag">VPC</span><span class="tag">Redes</span></div><a class="link" href="aws/rede/lab-264/">Ver mais <span aria-hidden="true">→</span><span class="sr-only"> sobre o Lab 264</span></a></article>
+<article class="card evidencias">
+<div class="card-topo"><div aria-hidden="true" class="icone">◈</div><span class="tipo">Evidências</span></div>
+<h3>Labs 11, 261 e 264</h3>
+<p>Registros de estudo e comunicações sobre EC2, redes e conectividade, com dados protegidos.</p>
+<div aria-label="Temas" class="tags"><span class="tag">EC2</span><span class="tag">VPC</span><span class="tag">Redes</span></div>
+<a class="link" href="evidencias/bloco-1-2/">Ver evidências <span aria-hidden="true">→</span><span class="sr-only"> dos Labs 11, 261 e 264</span></a>
+</article>
+</section>
+<nav aria-label="Páginas de laboratórios" class="paginacao" hidden="" id="paginacao">
+<button id="anterior" type="button">← Anterior</button>
+<span aria-live="polite" id="pagina"></span>
+<button id="proximo" type="button">Próxima →</button>
+</nav>
+<footer>Laboratório da AG • Espaço autoral de estudo</footer>
 </main>
 <script>
 // A paginação aparece quando houver mais de seis cartões.
@@ -89,7 +87,7 @@ const cards = Array.from(document.querySelectorAll('#labs .card'));
 const porPagina = 6;
 let pagina = 0;
 const totalPaginas = Math.max(1, Math.ceil(cards.length / porPagina));
-document.getElementById('total').textContent = cards.length === 1 ? '1 laboratório' : `${cards.length} laboratórios`;
+document.getElementById('total').textContent = `${cards.length - 1} laboratórios`;
 const nav = document.getElementById('paginacao');
 const anterior = document.getElementById('anterior');
 const proximo = document.getElementById('proximo');
