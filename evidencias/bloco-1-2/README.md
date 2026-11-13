@@ -1,6 +1,6 @@
 # Evidências: práticas e comunicações sobre Labs 11, 261 e 264
 
-Registros relacionados ao estudo de EC2, redes e conectividade. Os recortes foram feitos de mensagens reais na pasta **Enviados** do Gmail e sanitizados antes da publicação. Faixas ocultam dados de conta, destinatário e trechos não necessários; no Lab 261, parte do assunto foi ocultada para resguardar nome de terceiro. As capturas não mostram avaliação ou resposta.
+Registros relacionados ao estudo de EC2, redes e conectividade. Os recortes foram feitos de mensagens reais na pasta **Enviados** do Gmail e sanitizados antes da publicação. Os endereços de e-mail foram ocultados. As capturas não mostram avaliação ou resposta.
 
 **Fuso e datas:** o cabeçalho original das mensagens consultadas pelo Gmail informa horário de Brasília (UTC−03:00), usado abaixo. Na visualização do navegador utilizada para os prints, a hora aparece quatro horas antes; por isso os prints de 261 e 264 exibem o dia anterior.
 
@@ -13,7 +13,7 @@ Registros relacionados ao estudo de EC2, redes e conectividade. Os recortes fora
 
 ## Lab 261 — EC2 e conectividade
 
-- Mensagem enviada em **30/10/2026 às 00h22** (Brasília); assunto: **Laboratório 261 | Resposta para a cliente** (nome no assunto omitido por privacidade).
+- Mensagem enviada em **30/10/2026 às 00h22** (Brasília); assunto: **Laboratório 261 | Resposta para a cliente Jess**.
 - O conteúdo enviado apresenta análise do cenário de conectividade e passos associados ao uso de Elastic IP.
 - [Captura sanitizada da mensagem em Enviados](imagens/lab-261-envio.svg).
 - [Imagem da prática incluída no e-mail](imagens/lab-261-pratica.svg): tela anterior à alocação, não comprova a associação concluída.
