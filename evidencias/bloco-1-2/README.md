@@ -16,6 +16,7 @@ Registros relacionados ao estudo de EC2, redes e conectividade. Os recortes fora
 - Mensagem enviada em **30/10/2026 às 00h22** (Brasília); assunto: **Laboratório 261 | Resposta para a cliente** (nome no assunto omitido por privacidade).
 - O conteúdo enviado apresenta análise do cenário de conectividade e passos associados ao uso de Elastic IP.
 - [Captura sanitizada da mensagem em Enviados](imagens/lab-261-envio.svg).
+- [Imagem da prática incluída no e-mail](imagens/lab-261-pratica.svg): tela anterior à alocação, não comprova a associação concluída.
 
 ## Lab 264 — VPC e conectividade
 
