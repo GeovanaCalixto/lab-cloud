@@ -48,9 +48,10 @@ Aprendi que TCP e UDP são protocolos de transporte e usam números de porta par
 Nos meus testes, HTTP/1.1 e HTTP/2 usaram TCP. 
 O número da porta deve ser entendido junto com o protocolo: TCP 443 e UDP 443 são diferentes.
 
-* socket(AF_INET, SOCK_STREAM..., IPPROTO_TCP) = 5: o curl criou o socket TCP número 5.
-* connect(5, ... sin_port=htons(443) ...): tentou conectar esse socket à porta 443.
-* SO_ERROR, [0]: a conexão IPv4 foi concluída sem erro. Depois veio HTTP/2 200
+Observando o TCP na prática
+Usei o comando strace para observar as chamadas de rede do curl. 
+Vi IPPROTO_TCP na criação do socket e a conexão com a porta 443. 
+A tentativa por IPv6 não encontrou rota, mas a conexão por IPv4 funcionou e recebi HTTP/2 200
 
 Portas e grupos de segurança na AWS
 Um grupo de segurança controla o tráfego permitido para um recurso, como uma instância EC2. 
