@@ -39,3 +39,20 @@ Comparei duas conexões ao mesmo domínio: uma via HTTP e outra via HTTPS.
 As duas responderam com sucesso, mas apenas a conexão HTTPS usou TLS. 
 Guardei os prints de cada teste na pasta Imagens.
 
+TCP e UDP
+Aprendi que TCP e UDP são protocolos de transporte e usam números de porta para direcionar a comunicação
+
+* TCP estabelece uma conexão e busca entregar os dados completos e em ordem, retransmitindo quando necessário.
+* UDP envia datagramas sem estabelecer uma conexão e não garante entrega ou ordem. Pode ser útil quando a rapidez importa, como em algumas chamadas de voz.
+
+Nos meus testes, HTTP/1.1 e HTTP/2 usaram TCP. 
+O número da porta deve ser entendido junto com o protocolo: TCP 443 e UDP 443 são diferentes.
+
+Portas e grupos de segurança na AWS
+Um grupo de segurança controla o tráfego permitido para um recurso, como uma instância EC2. 
+Suas regras indicam protocolo, porta e origem para entrada ou destino para saída.
+
+Por exemplo, uma regra de entrada pode permitir TCP na porta 443 a partir de uma origem definida, para acessar uma aplicação HTTPS. 
+Isso não garante, por si só, que o acesso funcione: a aplicação também precisa estar disponível e a rede configurada.
+
+Grupos de segurança são stateful: as respostas ao tráfego permitido são aceitas automaticamente, sem uma regra separada para o retorno.
