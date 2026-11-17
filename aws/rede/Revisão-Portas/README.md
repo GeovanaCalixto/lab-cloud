@@ -17,7 +17,9 @@ Essas são as portas padrão de HTTPS e HTTP, respectivamente, embora os serviç
 Teste 1: HTTPS na porta 443
 Executei curl -I https://example.com:443. 
 Recebi HTTP/2 200, indicando que minha solicitação foi atendida com sucesso. 
-O HTTPS usa TLS () para proteger a comunicação em trânsito.
+O HTTPS usa TLS (TLS significa Transport Layer Security ou Segurança da Camada de Transporte. 
+É um protocolo que protege os dados durante a comunicação: 
+criptografa as informações, ajuda a detectar alterações e usa certificados para verificar a identidade do servidor.)
 
 Teste 2: HTTP na porta 80
 Executei curl -I http://example.com:80. 
